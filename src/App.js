@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import elements from "./data/elements";
 import ElementModal from "./ElementModal";
+import HomeButton from "./HomeButton";
 import { Tooltip } from "react-tooltip";
 import "./App.css";
 
@@ -54,13 +55,20 @@ function App() {
         el.symbol.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+  const handleHomeClick = () => {
+    setSelectedElement(null); // Reset the selected element
+    // Add any other state resets you need here
+    setSelectedGroup("All");
+    setSearchTerm("");
+    setTemperature(25); // Default to 25°C (room temp)
+  };
+
   return (
     <div className="App">
       <Header />
 
       {/* Temperature Slider */}
-      <div
-        style={{ textAlign: "center", marginBottom: "20px", color: "white" }}>
+      <div style={{ textAlign: "center", marginTop: "10px", color: "white" }}>
         <label htmlFor="temperature-slider">Temperature (°C): </label>
         <input
           type="range"
@@ -107,7 +115,7 @@ function App() {
           }}
         />
       </div>
-
+      <HomeButton onClick={handleHomeClick} />
       <main className="elements-grid">
         {filteredElements.map((el) => (
           <div
