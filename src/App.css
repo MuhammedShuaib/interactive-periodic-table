@@ -1,0 +1,141 @@
+/* Body background with an image and whitish overlay */
+body {
+  /* background-image: url("./hero-2.jpg"); Replace with your image path */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("./hero-2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps background fixed during scroll */
+  margin: 0;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+/* body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.877); /* Whitish overlay with 30% opacity */
+/* pointer-events: none; /* Allows content to be interactable */
+/* z-index: 0;
+} */
+
+/* Main content container */
+.main-content {
+  position: relative; /* Stacks content above the overlay */
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  backdrop-filter: blur(10px) brightness(0.9); /* Glassy blur effect */
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  z-index: 1; /* Ensure main content is above the background overlay */
+}
+
+/* Elements grid: Make it responsive */
+.elements-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr); /* Default: 14 columns */
+  gap: 10px;
+  padding: 20px;
+  max-width: 100%; /* Ensure the grid doesn't exceed the width of the container */
+  margin: 0 auto; /* Center the grid */
+}
+
+/* Element box styling */
+.element {
+  padding: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 8px;
+  color: white; /* White text for visibility */
+  backdrop-filter: blur(5px);
+  position: relative;
+  min-width: 60px; /* Minimum width to avoid extreme shrinkage */
+}
+
+/* Atomic number position in top left corner */
+.element .atomic-number {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7); /* Light gray for contrast */
+}
+
+/* Symbol in center and state at the bottom */
+.element .symbol {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.element .state {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8); /* Slightly lighter text for state */
+  margin-top: 5px;
+}
+
+/* Element hover effect */
+.element:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Slightly more opaque on hover */
+}
+
+/* Element types with specific colors */
+.element.solid {
+  color: rgba(255, 255, 255, 0.998); /* Example hex: #8A2BE2 */
+  -webkit-text-stroke: 0.2px black;
+}
+
+.element.liquid {
+  color: rgb(0, 255, 4); /* Example hex: #1E90FF */
+  -webkit-text-stroke: 0.2px black;
+}
+
+.element.gas {
+  color: rgb(255, 226, 60); /* Example hex: #FFD700 */
+  -webkit-text-stroke: 0.2px black;
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 1024px) {
+  .elements-grid {
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .elements-grid {
+    grid-template-columns: repeat(6, 1fr); /* 4 columns for small screens */
+  }
+
+  .element {
+    padding: 5px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .elements-grid {
+    grid-template-columns: repeat(4, 1fr); /* 1 column for very small screens */
+  }
+
+  .element {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
